@@ -45,15 +45,18 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // The function calls playRound() until a player's score is 3
-function game(){
-    while (computerScore < 3 && playerScore < 3) {
+function game() {
+    for (let i = 0; i < 5; i++) {
         playRound(playerSelection, computerSelection)
     }
-    if (computerScore === 3) {
+    if (computerScore > playerScore) {
         console.log('YOU LOSE!');
     }
-    else {
+    else if (computerScore < playerScore) {
         console.log('YOU WIN!');
+    }
+    else {
+        console.log('TIE GAME!');
     }
 }
 
