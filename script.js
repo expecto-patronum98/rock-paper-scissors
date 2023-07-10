@@ -44,22 +44,22 @@ function playRound(playerSelection, computerSelection) {
     console.log('Computer score: ' + computerScore);
 }
 
-// The function calls playRound() until a player's score is 3
+// The function calls playRound() 5 times
 function game() {
     for (let i = 0; i < 5; i++) {
         playRound(playerSelection, computerSelection)
     }
-    if (computerScore > playerScore) {
-        console.log('YOU LOSE!');
-    }
-    else if (computerScore < playerScore) {
-        console.log('YOU WIN!');
-    }
-    else {
-        console.log('TIE GAME!');
-    }
 }
-
 
 game();
 
+// Check final scores and console.log the result
+if (computerScore > playerScore) {
+    console.log('YOU LOSE!');
+}
+else if (computerScore < playerScore) {
+    console.log('YOU WIN!');
+}
+else {
+    console.log('TIE GAME!');
+}
