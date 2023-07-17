@@ -9,7 +9,6 @@
 }
 
 body {
-    margin: 0 0 160px 0;
     font-family: var(--body-font);
     
     color: var(--neutral-color);
@@ -335,6 +334,12 @@ img {
         margin-right: auto;
     }
 
+    .header {
+        height: fit-content;
+        gap: 0;
+        line-height: 1.5rem;
+    }
+
     .scoreboard,
     .score-container {
         display: flex;
@@ -350,19 +355,24 @@ img {
     }
 
     .rps {
-        font-size: var(--h1-font-size);
+        font-size: 0.9rem;
     }
 
     .rps-subtitle {
-        font-size: var(--normal-font-size);
+        font-size: 0.7rem;
+    }
+
+    .explainer {
+        font-size: 0.6rem;
     }
 
     .title {
-        font-size: var(--normal-font-size);
+        font-size: 0.8rem;
+        line-height: 1.2rem;
     }
 
     .subtitle {
-        font-size: 12px;
+        font-size: 0.6rem;
         padding: 8px 0 8px;
     }
 
@@ -383,6 +393,10 @@ img {
     .img-played {
         height: 30px;
         width: auto;
+    }
+
+    .play-again-btn {
+        font-size: 0.7rem;
     }
   }
 
