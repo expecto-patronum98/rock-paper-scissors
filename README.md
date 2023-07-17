@@ -30,9 +30,9 @@ The repository hase the following structure:
 
 ## How to Play
 
-You can play the live version of the game [here](add link).
+You can play the live version of the game [here](https://sofiabaezzato.github.io/rock-paper-scissors/).
 
-Not responsive on mobile yet.
+**Note: not responsive on mobile yet.**
 
 ## Installation
 

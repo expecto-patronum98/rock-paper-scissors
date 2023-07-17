@@ -105,7 +105,7 @@ function playRound(playerSelection, computerSelection) {
         };
         setTimeout(() => {
             isGameOver(playerScore, computerScore);
-        }, 3000);
+        }, 1500);
 
         displayPlayerScore.innerText = ('Player: ' + playerScore);
         displayComputerScore.innerText = ('Computer: ' + computerScore);
@@ -151,6 +151,7 @@ function isGameOver (playerScore, computerScore) {
     // if the game is over display the gameover container
     gameoverOverlay.style.visibility = 'visible';
     playAgainBtn.style.visibility = 'visible';
+
     if (playerScore > computerScore) {
         messageImage.src = "./img/winner.png";
         const messageGameover = document.getElementById('message-gameover');

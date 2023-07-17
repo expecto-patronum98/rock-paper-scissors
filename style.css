@@ -1,14 +1,19 @@
 /* ======== BASE ======== */
 
-*,
-html,
-body {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
+}
+
+body {
+    margin: 0 0 160px 0;
+    font-family: var(--body-font);
+    
     color: var(--neutral-color);
+    background-color: var(--second-color);
     scroll-behavior: smooth;
 }
 
@@ -16,10 +21,11 @@ main {
     text-align: center;
     display: flex;
     flex-direction: column;
-}
-
-body {
-    background-color: var(--second-color);
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    max-width: 1200px;
+    gap: 22px;
 }
 
 button {
@@ -62,16 +68,19 @@ img {
     background-color: var(--first-color);
     color: var(--neutral-color);
     height: 160px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 14px;
     justify-content: center;
     align-items: center;
     font-size: var(--h1-font-size);
+    line-height: 2.5rem;
 }
 
 .rps {
     font-size: var(--big-font-size);
+    text-align: center;
 }
 
 .rps-subtitle {
@@ -103,9 +112,9 @@ img {
 }
 
 .score-container {
-    height: 150px;
+    /* height: 150px;
     padding-top: 20px;
-    max-width: 80%;
+    max-width: 80%; */
     text-align: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -251,9 +260,11 @@ img {
 .explainer {
     padding: 12px;
     font-size: var(--normal-font-size);
+    line-height: 1.2rem;
 }
 
 .startpage-btn {
+    margin-top: 12px;
     padding: 12px 24px;
     color: var(--first-color);
     font-size: var(--small-font-size);
@@ -314,4 +325,64 @@ img {
     transition: 0.2s;
 }
 
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+
+    html {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .scoreboard,
+    .score-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .score-block {
+        display:none;
+    }
+
+    .computer-container {
+        margin-top: 16px;
+    }
+
+    .rps {
+        font-size: var(--h1-font-size);
+    }
+
+    .rps-subtitle {
+        font-size: var(--normal-font-size);
+    }
+
+    .title {
+        font-size: var(--normal-font-size);
+    }
+
+    .subtitle {
+        font-size: 12px;
+        padding: 8px 0 8px;
+    }
+
+    .score-container {
+        font-size: var(--small-font-size);
+    }
+
+    .btn {
+        height: 100px;
+        width: 100px;
+    }
+
+    .img-btn {
+        height: 40px;
+        width: auto;
+    }
+
+    .img-played {
+        height: 30px;
+        width: auto;
+    }
+  }
 
