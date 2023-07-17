@@ -336,6 +336,7 @@ img {
 
     .header {
         height: fit-content;
+        padding: 8px 0 8px 0;
         gap: 0;
         line-height: 1.5rem;
     }
