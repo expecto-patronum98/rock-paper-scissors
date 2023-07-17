@@ -193,7 +193,7 @@ function restart () {
     restartBtn.style.opacity = '1';
 };
 
-// create random sentences for win round
+// create random sentences for won round
 function getRandomSentenceWin () {
     var index = Math.floor(Math.random() * (winSentences.length));
     return winSentences[index];
@@ -229,7 +229,7 @@ let winSentences = [
     "You rule! Round conquered!"
 ];
 
-// create random sentences for lose round
+// create random sentences for lost round
 function getRandomSentenceLose () {
     var index = Math.floor(Math.random() * (loseSentences.length));
     return loseSentences[index];
