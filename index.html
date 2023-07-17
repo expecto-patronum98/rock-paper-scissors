@@ -19,23 +19,30 @@
         <p class="msg-gameover" id="message-gameover">You Win!</p>
         <button class="play-again-btn" id="playagain-btn">Play again</button>
     </div>
+
+    <div class="container-startpage" id="startpage">
+        <h1 class="rps">ROCK PAPER SCISSORS</h1>
+        <h3 class="rps-subtitle">The game</h3>
+        <p class="explainer">Choose wisely. First to score 5 points wins the game.</p>
+        <button class="play-again-btn" id="startpage-btn">Play!</button>
+    </div>
+
     <header class="header">
         <h1 class="rps">ROCK PAPER SCISSORS</h1>
         <h3 class="rps-subtitle">The game</h3>
-    </header>
-    <div class="container-startpage"></div>
-    
+    </header>    
     <main class="main">
-        
-        <div class="scoreboard">
+        <div class="text">
             <h3 class="title" id="message-title">It's your turn!</h3>
             <h2 class="subtitle" id="message-subtitle"></h2>
+        </div>
+        <div class="scoreboard">
             <div class="score-container">
                 <div class="player-container">
                     <img src="" alt="" class="img-played" id="player-played">
                     <p class="player-score" id="player-score">Player: 0</p>
                 </div>
-                <div class="score-block">
+                <div class="score-block" id="scoreBlock">
                     <p class="score">SCORE</p>
                 </div>
                 <div class="computer-container">
@@ -48,6 +55,10 @@
             <button class="btn" id="rock-btn"><img src="./img/rock.png" class="img-btn" alt="rock"></button>
             <button class="btn" id="paper-btn"><img src="./img/paper.png" class="img-btn" alt="paper"></button>
             <button class="btn" id="scissors-btn"><img src="./img/scissors.png" class="img-btn" alt="scissors"></button>
+        </div>
+        <div class="restart" id="restart">
+            <button class="restart-btn" id="restartBtn">Restart</button>
+            <i class="fa-solid fa-arrow-rotate-left"></i>
         </div>
     </main>
     <footer class="footer-container">

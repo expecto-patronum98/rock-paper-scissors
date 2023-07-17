@@ -59,4 +59,5 @@ To run this project locally, follow these steps:
 2. This project has allowed me to gain more confidence in JavaScript, specifically in DOM manipulation using the addEventListener() method and getElementById() method.
 3. Other important concepts that I have learned to use, hopefully correctly, are variables, scope, and hoisting.
 4. Even though I had a clear vision of the entire project from the beginning, translating that into clean code proved to be extremely challenging. In the end, the code functions as intended, but I acknowledge that it may appear messy and the logic could be simplified. I hope to improve my skills in writing cleaner and more concise code in the future.
+5. In the end, I added a function that displays random sentences of victory or defeat. I thought it would be a nice touch to conclude this awesome project.
 
