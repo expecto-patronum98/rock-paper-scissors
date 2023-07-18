@@ -22,8 +22,6 @@ const startgameBtn = document.getElementById('startpage-btn');
 const playAgainBtn = document.getElementById('playagain-btn');
 const restartBtn = document.getElementById('restartBtn');
 
-const scoreText = document.getElementById('scoreBlock');
-
 rockBtn.addEventListener('click', () => handleClick('rock'));
 paperBtn.addEventListener('click', () => handleClick('paper'));
 scissorsBtn.addEventListener('click', () => handleClick('scissors'));
@@ -44,7 +42,6 @@ restartBtn.addEventListener('click', () => {
 });
 
 function handleClick(playerSelection) {
-    scoreText.style.paddingTop = '84px';
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
 }
@@ -127,12 +124,20 @@ function getComputerChoice() {
 
 function win (playerSelection, computerSelection) {
     let message = getRandomSentenceWin();
+    playerPlayed.style.width = '60px';
+    playerPlayed.style.opacity = '1';
+    computerPlayed.style.opacity = '0.5';
+    computerPlayed.style.width = '50px';
     messageTitle.style.color = 'green';
     messageTitle.innerText = (message);
     messageSubtitle.innerText = (playerSelection + ' beats ' + computerSelection);
 };
 
 function lose (playerSelection, computerSelection) {
+    computerPlayed.style.width = '60px';
+    computerPlayed.style.opacity = '1';
+    playerPlayed.style.opacity = '0.5';
+    playerPlayed.style.width = '50px';
     let message = getRandomSentenceLose();
     messageTitle.style.color = 'red';
     messageTitle.innerText = (message);
@@ -140,6 +145,10 @@ function lose (playerSelection, computerSelection) {
 };
 
 function tie () {
+    playerPlayed.style.width = '50px';
+    playerPlayed.style.opacity = '0.5';
+    computerPlayed.style.opacity = '0.5';
+    computerPlayed.style.width = '50px';
     messageTitle.style.color = 'var(--neutral-color)';
     messageTitle.innerText = ('It\'s a tie. Play again!');
     messageSubtitle.innerText = ('');
@@ -182,8 +191,6 @@ function restart () {
 
     playerScore = 0;
     computerScore = 0;
-
-    scoreText.style.paddingTop = '34px';
 
     displayPlayerScore.innerText = ('Player: ' + playerScore);
     displayComputerScore.innerText = ('Computer: ' + computerScore);
