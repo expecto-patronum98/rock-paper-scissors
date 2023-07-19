@@ -1,12 +1,28 @@
+/* THE GAME */
+
+const SELECTIONS = [
+    {
+        name: 'rock',
+        img: './img/rock.png',
+        beats: 'scissors'
+    },
+    {
+        name: 'paper',
+        img: './img/paper.png',
+        beats: 'rock'
+    },
+    {
+        name: 'scissors',
+        img: './img/scissors.png',
+        beats: 'paper'
+    }
+]
+
 let playerScore = 0;
 let computerScore = 0;
 
 let displayPlayerScore = document.getElementById('player-score');
 let displayComputerScore = document.getElementById('computer-score');
-
-const rockBtn = document.getElementById('rock-btn');
-const paperBtn = document.getElementById('paper-btn');
-const scissorsBtn = document.getElementById('scissors-btn');
 
 const playerPlayed = document.getElementById('player-played');
 const computerPlayed = document.getElementById('computer-played');
@@ -19,12 +35,9 @@ var gameoverOverlay = document.getElementById('gameover');
 var startgameOverlay = document.getElementById('startpage')
 
 const startgameBtn = document.getElementById('startpage-btn');
+const selectionBtns = document.querySelectorAll('[data-selection]');
 const playAgainBtn = document.getElementById('playagain-btn');
 const restartBtn = document.getElementById('restartBtn');
-
-rockBtn.addEventListener('click', () => handleClick('rock'));
-paperBtn.addEventListener('click', () => handleClick('paper'));
-scissorsBtn.addEventListener('click', () => handleClick('scissors'));
 
 startgameBtn.addEventListener('click', () => {
     startgameBtn.style.visibility = 'hidden';
@@ -32,6 +45,14 @@ startgameBtn.addEventListener('click', () => {
         startgameOverlay.style.visibility = 'hidden';
     }, 300);
 }, { once: true });
+
+selectionBtns.forEach(selectionBtns => {
+    selectionBtns.addEventListener('click', e => {
+        const selectionName = selectionBtns.dataset.selection
+        const selection = SELECTIONS.find(selection => selection.name === selectionName)
+        playRound(selection)
+    })
+})
 
 playAgainBtn.addEventListener('click', () => {
     restart();
@@ -46,83 +67,40 @@ function handleClick(playerSelection) {
     playRound(playerSelection, computerSelection);
 }
 
-function playRound(playerSelection, computerSelection) {
-    // display images of what player and computer played
-    if (playerSelection === 'rock') playerPlayed.src = "./img/rock.png";
-    else if (playerSelection === 'paper') playerPlayed.src = "./img/paper.png";
-    else if (playerSelection === 'scissors') playerPlayed.src = "./img/scissors.png";
+function playRound(selection) {
+    playerPlayed.src = selection.img
+    const computerSelection = getComputerChoice()
+    computerPlayed.src = computerSelection.img
+    const youWinner = isWinner(selection, computerSelection)
+    const computerWinner = isWinner(computerSelection, selection)
 
-    if (computerSelection === 'rock') computerPlayed.src = "./img/rock.png";
-    else if (computerSelection === 'paper') computerPlayed.src = "./img/paper.png";
-    else if (computerSelection === 'scissors') computerPlayed.src = "./img/scissors.png";
-
-    // play a round, add a point to the winner and display the outcome
-    if (
-        computerSelection === 'scissors'&& playerSelection === 'rock'
-        || computerSelection === 'rock' && playerSelection === 'paper'
-        || computerSelection === 'paper' && playerSelection === 'scissors'
-        ) {
-        playerScore++;
-        win(playerSelection, computerSelection);
-    }
-    else if (
-        computerSelection === 'rock' && playerSelection === 'scissors'
-        || computerSelection === 'paper' && playerSelection === 'rock'
-        || computerSelection === 'scissors' && playerSelection === 'paper'
-        ) {
-        computerScore++;
-        lose(playerSelection, computerSelection);
-    }
-    else if (computerSelection === playerSelection) {
-        tie();
-    }
+    if (youWinner) win(selection, computerSelection)
+    else if (computerWinner) lose(selection, computerSelection)
+    else tie(selection, computerSelection)
 
     displayPlayerScore.innerText = ('Player: ' + playerScore);
     displayComputerScore.innerText = ('Computer: ' + computerScore);
 
-    // if score is 5, display the gameover message and a "play again" button
+    // if score is 5, display the gameover overlay
     if (playerScore == 5 || computerScore == 5) {
-        rockBtn.disabled = true;
-        paperBtn.disabled = true;
-        scissorsBtn.disabled = true;
-        restartBtn.disabled = true;
-
-        rockBtn.style.opacity = '0.5';
-        paperBtn.style.opacity = '0.5';
-        scissorsBtn.style.opacity = '0.5';
-        restartBtn.style.opacity = '0.5';
-
-        if (playerScore > computerScore) {
-            playerPlayed.src = "./img/winner.png";
-            computerPlayed.src = "./img/loser.png";
-        }
-        else {
-            playerPlayed.src = "./img/loser.png";
-            computerPlayed.src = "./img/winner.png";
-        };
-        setTimeout(() => {
-            isGameOver(playerScore, computerScore);
-        }, 1500);
-
-        displayPlayerScore.innerText = ('Player: ' + playerScore);
-        displayComputerScore.innerText = ('Computer: ' + computerScore);
+        disableBtns()
+        isGameOver(playerScore, computerScore)
     }
 }
 
-// this function will randomly return 'Rock', 'Paper' or 'Scissors' as computer choice
+// returns true if the seletion wins over the opponent
+function isWinner(selection, opponentSelection) {
+    return selection.beats === opponentSelection.name
+}
+
+// this function will randomly return an element of the SELECTIONS array
 function getComputerChoice() {
-    let randomNumber = Math.floor(Math.random() * 3);
-    switch (randomNumber) {
-        case 0:
-            return 'rock';
-        case 1:
-            return 'paper';
-        case 2:
-            return 'scissors';
-    }
+    let randomIndex = Math.floor(Math.random() * SELECTIONS.length);
+    return SELECTIONS[randomIndex]
 }
 
-function win (playerSelection, computerSelection) {
+function win (selection, computerSelection) {
+    playerScore++;
     let message = getRandomSentenceWin();
     playerPlayed.style.width = '60px';
     playerPlayed.style.opacity = '1';
@@ -130,18 +108,19 @@ function win (playerSelection, computerSelection) {
     computerPlayed.style.width = '50px';
     messageTitle.style.color = 'green';
     messageTitle.innerText = (message);
-    messageSubtitle.innerText = (playerSelection + ' beats ' + computerSelection);
+    messageSubtitle.innerText = (selection.name + ' beats ' + computerSelection.name);
 };
 
-function lose (playerSelection, computerSelection) {
+function lose (selection, computerSelection) {
+    computerScore++;
+    let message = getRandomSentenceLose();
     computerPlayed.style.width = '60px';
     computerPlayed.style.opacity = '1';
     playerPlayed.style.opacity = '0.5';
     playerPlayed.style.width = '50px';
-    let message = getRandomSentenceLose();
     messageTitle.style.color = 'red';
     messageTitle.innerText = (message);
-    messageSubtitle.innerText = (computerSelection + ' beats ' + playerSelection);
+    messageSubtitle.innerText = (computerSelection.name + ' beats ' + selection.name);
 };
 
 function tie () {
@@ -154,28 +133,47 @@ function tie () {
     messageSubtitle.innerText = ('');
 };
 
-
 // is the game is over, display an overlay container with a "play again" button
 function isGameOver (playerScore, computerScore) {
-    // if the game is over display the gameover container
-    gameoverOverlay.style.visibility = 'visible';
-    playAgainBtn.style.visibility = 'visible';
-
     if (playerScore > computerScore) {
+        playerPlayed.src = "./img/winner.png";
+        computerPlayed.src = "./img/loser.png";
         messageImage.src = "./img/winner.png";
         const messageGameover = document.getElementById('message-gameover');
         messageGameover.innerText = 'Congrats! You Won!';
     }
     else {
+        playerPlayed.src = "./img/loser.png";
+        computerPlayed.src = "./img/winner.png";
         messageImage.src = "./img/loser.png";
         const messageGameover = document.getElementById('message-gameover');
         messageGameover.innerText = 'Oh no! You Lost.';
     }
-    rockBtn.disabled = false;
-    paperBtn.disabled = false;
-    scissorsBtn.disabled = false;
-    restartBtn.disabled = false;
+
+    setTimeout(() => {
+        gameoverOverlay.style.visibility = 'visible';
+        playAgainBtn.style.visibility = 'visible';
+        enableBtns()
+    }, 1500);
 };
+
+function disableBtns () {
+    selectionBtns.forEach(selectionBtns => {
+        selectionBtns.disabled = true;
+        restartBtn.disabled = true;
+        selectionBtns.style.opacity = '0.5';
+        restartBtn.style.opacity = '0.5';
+    })
+}
+
+function enableBtns () {
+    selectionBtns.forEach(selectionBtns => {
+        selectionBtns.disabled = false;
+        restartBtn.disabled = false;
+        selectionBtns.style.opacity = '1';
+        restartBtn.style.opacity = '1';
+    })
+}
 
 function restart () {
     messageTitle.style.color = 'var(--neutral-color)';
@@ -195,16 +193,19 @@ function restart () {
     displayPlayerScore.innerText = ('Player: ' + playerScore);
     displayComputerScore.innerText = ('Computer: ' + computerScore);
 
-    rockBtn.style.opacity = '1';
-    paperBtn.style.opacity = '1';
-    scissorsBtn.style.opacity = '1';
-    restartBtn.style.opacity = '1';
+    enableBtns();
 };
 
 // create random sentences for won round
 function getRandomSentenceWin () {
     var index = Math.floor(Math.random() * (winSentences.length));
     return winSentences[index];
+}
+
+// create random sentences for lost round
+function getRandomSentenceLose () {
+    var index = Math.floor(Math.random() * (loseSentences.length));
+    return loseSentences[index];
 }
 
 let winSentences = [
@@ -237,12 +238,6 @@ let winSentences = [
     "You rule! Round conquered!"
 ];
 
-// create random sentences for lost round
-function getRandomSentenceLose () {
-    var index = Math.floor(Math.random() * (loseSentences.length));
-    return loseSentences[index];
-}
-
 const loseSentences = [
     "Better luck next time!",
     "Oops, you lost!",
@@ -269,4 +264,3 @@ const loseSentences = [
     "Rome wasn't built overnight.",
     "You're a fighter, remember!"
   ];
-  
