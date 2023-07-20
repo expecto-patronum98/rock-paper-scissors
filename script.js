@@ -39,13 +39,18 @@ const selectionBtns = document.querySelectorAll('[data-selection]');
 const playAgainBtn = document.getElementById('playagain-btn');
 const restartBtn = document.getElementById('restartBtn');
 
-const audioIntro = document.getElementById('audioIntro')
+const audioIntro = document.getElementById('audioIntro');
+const audioRoundWinner = document.getElementById('audioRoundWinner');
+const audioRoundLoser = document.getElementById('audioRound Loser');
+const audioRoundTie = document.getElementById('audioRoundTie');
+const audioWinner = document.getElementById('audioEndgameWinner');
+const audioLoser = document.getElementById('audioEndgameLoser')
 
 startgameBtn.addEventListener('click', () => {
     startgameBtn.style.visibility = 'hidden';
     setTimeout(() => {
         startgameOverlay.style.visibility = 'hidden';
-        audioIntro.pause();
+        /* audioIntro.play(); */
     }, 300);
 }, { once: true });
 
@@ -105,6 +110,7 @@ function getComputerChoice() {
 function win (selection, computerSelection) {
     playerScore++;
     let message = getRandomSentenceWin();
+    audioRoundWinner.play();
     playerPlayed.style.width = '60px';
     playerPlayed.style.opacity = '1';
     computerPlayed.style.opacity = '0.5';
@@ -117,6 +123,7 @@ function win (selection, computerSelection) {
 function lose (selection, computerSelection) {
     computerScore++;
     let message = getRandomSentenceLose();
+    audioRoundLoser.play();
     computerPlayed.style.width = '60px';
     computerPlayed.style.opacity = '1';
     playerPlayed.style.opacity = '0.5';
@@ -127,6 +134,7 @@ function lose (selection, computerSelection) {
 };
 
 function tie () {
+    audioRoundTie.play();
     playerPlayed.style.width = '50px';
     playerPlayed.style.opacity = '0.5';
     computerPlayed.style.opacity = '0.5';
@@ -154,6 +162,8 @@ function isGameOver (playerScore, computerScore) {
     }
 
     setTimeout(() => {
+        if (playerScore > computerScore) audioWinner.play();
+        else audioLoser.play();
         gameoverOverlay.style.visibility = 'visible';
         playAgainBtn.style.visibility = 'visible';
         enableBtns()

@@ -16,13 +16,19 @@
 <body>
     <div class="page-container">
         <div class="container-gameover" id="gameover">
+            <audio id="audioEndgameWinner">
+                <source src="./audio/endgame-winner.mp3" type="audio/mp3">
+            </audio>
+            <audio id="audioEndgameLoser">
+                <source src="./audio/endgame-loser.mp3" type="audio/mp3">
+            </audio>
             <img src="" id="message-img">
             <p class="msg-gameover" id="message-gameover">You Win!</p>
             <button class="play-again-btn" id="playagain-btn">Play again</button>
         </div>
     
         <div class="container-startpage" id="startpage">
-            <audio autoplay muted id="audioIntro">
+            <audio autoplay id="audioIntro">
                 <source src="./audio/intro.mp3" type="audio/mp3">
             </audio>
             <h1 class="rps">ROCK PAPER SCISSORS</h1>
@@ -36,6 +42,15 @@
             <h3 class="rps-subtitle">The game</h3>
         </header>    
         <main class="main">
+            <audio id="audioRoundWinner">
+                <source src="./audio/winner.mp3" type="audio/mp3">
+            </audio>
+            <audio id="audioRoundLoser">
+                <source src="./audio/loser.mp3" type="audio/mp3">
+            </audio>
+            <audio id="audioRoundTie">
+                <source src="./audio/tie.mp3" type="audio/mp3">
+            </audio>
             <div class="text">
                 <h3 class="title" id="message-title">It's your turn!</h3>
                 <h2 class="subtitle" id="message-subtitle"></h2>
