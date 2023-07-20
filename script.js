@@ -39,10 +39,13 @@ const selectionBtns = document.querySelectorAll('[data-selection]');
 const playAgainBtn = document.getElementById('playagain-btn');
 const restartBtn = document.getElementById('restartBtn');
 
+const audioIntro = document.getElementById('audioIntro')
+
 startgameBtn.addEventListener('click', () => {
     startgameBtn.style.visibility = 'hidden';
     setTimeout(() => {
         startgameOverlay.style.visibility = 'hidden';
+        audioIntro.pause();
     }, 300);
 }, { once: true });
 

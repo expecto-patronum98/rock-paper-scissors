@@ -10,7 +10,6 @@
 
 body {
     font-family: var(--body-font);
-    
     color: var(--neutral-color);
     background-color: var(--second-color);
     scroll-behavior: smooth;
@@ -24,7 +23,8 @@ main {
     margin-right: auto;
     width: 90%;
     max-width: 1200px;
-    gap: 22px;
+    gap: 32px;
+    padding-bottom: 2.5rem; /* test */
 }
 
 button {
@@ -150,14 +150,43 @@ img {
 }
 
 
-.buttons-container {
+/* .buttons-container {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--second-color);
     z-index: 1;
+} */
+
+/* TEST */
+
+.page-container {
+    position: relative;
+    min-height: 100vh;
 }
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    display: grid;
+    justify-content: center;
+    width: 80%; /* 630px */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 160px));
+    gap: 15px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+}
+
+/* END TEST */
 
 
 .restart {
@@ -174,9 +203,9 @@ img {
     background-color: hsl(212, 24%, 12%);
     border: none;
     border-radius: 6px;
-    height: 160px;
+/*     height: 160px;
     width: 160px;
-    margin: 20px;
+    margin: 20px; */
     font-size: var(--small-font-size);
 }
 
@@ -204,9 +233,10 @@ img {
 }
 
 .footer-container {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
+    height: 2.5rem;
     width: 100%;
 
     color: var(--neutral-color);
@@ -336,6 +366,10 @@ img {
         margin-left: auto;
         margin-right: auto;
     }
+    
+    main {
+        gap: 22px;
+    }
 
     .header {
         height: fit-content;
@@ -380,27 +414,48 @@ img {
         padding: 8px 0 8px;
     }
 
-    .score-container {
-        font-size: var(--small-font-size);
+    .score-container,
+    .computer-score,
+    #computer-score,
+    #player-score {
+        font-size: 0.7rem;
     }
 
-    .btn {
+/*     .btn {
         height: 100px;
         width: 100px;
-    }
+    } */
 
     .img-btn {
-        height: 40px;
-        width: auto;
+        height: 30px;
+        width: 30px;
     }
 
-    .img-played {
+/*     .img-played {
         height: 30px;
         width: auto;
+    } */
+
+    .buttons {
+        width: 90%; /* 630px */
+        grid-template-columns: repeat(auto-fit, minmax(80px, 80px));
+    }
+    
+    .btn {
+        height: 80px;
     }
 
     .play-again-btn {
         font-size: 0.7rem;
+    }
+
+    .msg-gameover {
+        font-size: 0.9rem;
+    }
+
+    .text {
+        padding: 12px 0 0 0;
+        height: 110px;
     }
   }
 

@@ -14,58 +14,66 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <div class="container-gameover" id="gameover">
-        <img src="" id="message-img">
-        <p class="msg-gameover" id="message-gameover">You Win!</p>
-        <button class="play-again-btn" id="playagain-btn">Play again</button>
-    </div>
-
-    <div class="container-startpage" id="startpage">
-        <h1 class="rps">ROCK PAPER SCISSORS</h1>
-        <h3 class="rps-subtitle">The game</h3>
-        <p class="explainer">Choose wisely. First to score 5 points wins the game.</p>
-        <button class="play-again-btn" id="startpage-btn">Play!</button>
-    </div>
-
-    <header class="header">
-        <h1 class="rps">ROCK PAPER SCISSORS</h1>
-        <h3 class="rps-subtitle">The game</h3>
-    </header>    
-    <main class="main">
-        <div class="text">
-            <h3 class="title" id="message-title">It's your turn!</h3>
-            <h2 class="subtitle" id="message-subtitle"></h2>
+    <div class="page-container">
+        <div class="container-gameover" id="gameover">
+            <img src="" id="message-img">
+            <p class="msg-gameover" id="message-gameover">You Win!</p>
+            <button class="play-again-btn" id="playagain-btn">Play again</button>
         </div>
-        <div class="scoreboard">
-            <div class="score-container">
-                <div class="player-container">
-                    <div class="image-container">
-                        <img src="" alt="" class="img-played" id="player-played">
+    
+        <div class="container-startpage" id="startpage">
+            <audio autoplay muted id="audioIntro">
+                <source src="./audio/intro.mp3" type="audio/mp3">
+            </audio>
+            <h1 class="rps">ROCK PAPER SCISSORS</h1>
+            <h3 class="rps-subtitle">The game</h3>
+            <p class="explainer">Choose wisely. First to score 5 points wins the game.</p>
+            <button class="play-again-btn" id="startpage-btn">Play!</button>
+        </div>
+    
+        <header class="header">
+            <h1 class="rps">ROCK PAPER SCISSORS</h1>
+            <h3 class="rps-subtitle">The game</h3>
+        </header>    
+        <main class="main">
+            <div class="text">
+                <h3 class="title" id="message-title">It's your turn!</h3>
+                <h2 class="subtitle" id="message-subtitle"></h2>
+            </div>
+            <div class="scoreboard">
+                <div class="score-container">
+                    <div class="player-container">
+                        <div class="image-container">
+                            <img src="" alt="" class="img-played" id="player-played">
+                        </div>
+                        <p class="player-score" id="player-score">Player: 0</p>
                     </div>
-                    <p class="player-score" id="player-score">Player: 0</p>
-                </div>
-                <div class="score-block" id="scoreBlock">
-                    <div class="image-container"></div>
-                    <p class="score">SCORE</p>
-                </div>
-                <div class="computer-container">
-                    <div class="image-container">
-                        <img src="" alt="" class="img-played" id="computer-played">
+                    <div class="score-block" id="scoreBlock">
+                        <div class="image-container"></div>
+                        <p class="score">SCORE</p>
                     </div>
-                    <p class="computer-score" id="computer-score">Computer: 0</p>
+                    <div class="computer-container">
+                        <div class="image-container">
+                            <img src="" alt="" class="img-played" id="computer-played">
+                        </div>
+                        <p class="computer-score" id="computer-score">Computer: 0</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="buttons-container">
-            <button class="btn" id="rock-btn" data-selection="rock"><img src="./img/rock.png" class="img-btn" alt="rock"></button>
-            <button class="btn" id="paper-btn" data-selection="paper"><img src="./img/paper.png" class="img-btn" alt="paper"></button>
-            <button class="btn" id="scissors-btn" data-selection="scissors"><img src="./img/scissors.png" class="img-btn" alt="scissors"></button>
-        </div>
-        <div class="restart" id="restart">
-            <button class="restart-btn" id="restartBtn">Restart</button>
-            <i class="fa-solid fa-arrow-rotate-left"></i>
-        </div>
-    </main>
+            <div class="buttons-container">
+                <div class="buttons">
+                    <button class="btn" id="rock-btn" data-selection="rock"><img src="./img/rock.png" class="img-btn" alt="rock"></button>
+                    <button class="btn" id="paper-btn" data-selection="paper"><img src="./img/paper.png" class="img-btn" alt="paper"></button>
+                    <button class="btn" id="scissors-btn" data-selection="scissors"><img src="./img/scissors.png" class="img-btn" alt="scissors"></button>
+                </div>
+            </div>
+            <div class="restart" id="restart">
+                <button class="restart-btn" id="restartBtn">Restart</button>
+                <i class="fa-solid fa-arrow-rotate-left"></i>
+            </div>
+        </main>
+    </div>
+    
     <footer class="footer-container">
         
         <a href="https://github.com/sofiabaezzato" class="copy">
