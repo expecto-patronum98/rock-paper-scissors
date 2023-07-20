@@ -41,7 +41,7 @@ const restartBtn = document.getElementById('restartBtn');
 
 const audioIntro = document.getElementById('audioIntro');
 const audioRoundWinner = document.getElementById('audioRoundWinner');
-const audioRoundLoser = document.getElementById('audioRound Loser');
+const audioRoundLoser = document.getElementById('audioRoundLoser');
 const audioRoundTie = document.getElementById('audioRoundTie');
 const audioWinner = document.getElementById('audioEndgameWinner');
 const audioLoser = document.getElementById('audioEndgameLoser')
@@ -121,9 +121,9 @@ function win (selection, computerSelection) {
 };
 
 function lose (selection, computerSelection) {
+    audioRoundLoser.play();
     computerScore++;
     let message = getRandomSentenceLose();
-    audioRoundLoser.play();
     computerPlayed.style.width = '60px';
     computerPlayed.style.opacity = '1';
     playerPlayed.style.opacity = '0.5';
