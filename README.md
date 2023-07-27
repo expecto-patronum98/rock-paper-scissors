@@ -4,6 +4,15 @@
 
 Welcome to the Rock Paper Scissors GitHub project! This repository contains the code for a simple implementation of the classic game "Rock Paper Scissors". It provides a retro game user interface (UI) for players to interact with and play the game.
 
+## Table of Contents
+
+- [Demo](#demo)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Project Description
 
 The project aims to provide a user-friendly version of the popular game "Rock Paper Scissors". The game follows the traditional rules: the user select either rock, paper, or scissors, and the computer randomnly select its choice. The round winner, awarded with +1 point, is determined based on the game's rules: rock beats scissors, scissors beats paper, and paper beats rock. First to score 5 points wins the game.
@@ -32,8 +41,6 @@ The repository hase the following structure:
 
 You can play the live version of the game [here](https://sofiabaezzato.github.io/rock-paper-scissors/).
 
-**Note: not responsive on mobile yet.**
-
 ## Installation
 
 To run this project locally, follow these steps:
@@ -61,3 +68,4 @@ To run this project locally, follow these steps:
 4. Even though I had a clear vision of the entire project from the beginning, translating that into clean code proved to be extremely challenging. In the end, the code functions as intended, but I acknowledge that it may appear messy and the logic could be simplified. I hope to improve my skills in writing cleaner and more concise code in the future.
 5. In the end, I added a function that displays random sentences of victory or defeat. I thought it would be a nice touch to conclude this awesome project.
 
+#### Video Demo:  <https://youtu.be/xegacpdSlHk>

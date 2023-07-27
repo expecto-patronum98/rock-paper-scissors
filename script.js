@@ -70,11 +70,6 @@ restartBtn.addEventListener('click', () => {
     restart();
 });
 
-function handleClick(playerSelection) {
-    const computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-}
-
 function playRound(selection) {
     playerPlayed.src = selection.img
     const computerSelection = getComputerChoice()
