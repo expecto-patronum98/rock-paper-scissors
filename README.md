@@ -6,12 +6,12 @@ Welcome to the Rock Paper Scissors GitHub project! This repository contains the 
 
 ## Table of Contents
 
-- [Demo](#demo)
+- [Project Description](#project-description)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
+- [Project Reflections](#project-reflections)
 
 ## Project Description
 
